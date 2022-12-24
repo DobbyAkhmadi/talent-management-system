@@ -2,8 +2,6 @@
 server:
   port: 8761
 spring:
-  main:
-    allow-bean-definition-overriding: true
   zipkin:
     base-url: http://localhost:9411
     enabled: false
@@ -12,6 +10,21 @@ spring:
       probability: 1.0
   profiles:
     active: dev
+
+#setup eureka stand alone
+eureka:
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 0
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  datacenter: TALENT MANAGEMENT SYSTEM
+  environment: development
+  server:
+    enable-self-preservation: true
 
 #setup eureka account
 app:

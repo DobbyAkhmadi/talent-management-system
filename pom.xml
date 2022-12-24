@@ -17,6 +17,7 @@
     <modules>
         <module>discovery-service</module>
         <module>api-gateway-service</module>
+        <module>partner-service</module>
     </modules>
 
     <properties>
