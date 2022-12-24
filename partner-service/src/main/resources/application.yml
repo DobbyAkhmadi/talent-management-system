@@ -1,6 +1,6 @@
 #setup current server and port
 server:
-  port: 8082
+  port: 0
 
 #setup current library
 spring:

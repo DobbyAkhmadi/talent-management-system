@@ -28,7 +28,7 @@ spring:
         - id: partner-service
           uri: lb://partner-service # load balancer
           predicates:
-            - Path=/api/v1/partner/**
+            - Path=/api/v1/partner/**,/api/v2/partner/**
 #        - id: talent-service
 #          uri: lb://talent-service
 #          predicates:

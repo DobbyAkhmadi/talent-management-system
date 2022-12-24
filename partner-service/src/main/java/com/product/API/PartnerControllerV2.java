@@ -1,4 +1,4 @@
-package com.product.API.V1;
+package com.product.API;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/partner")
-@RequiredArgsConstructor
-public class PartnerControllerV1 {
+@RequestMapping("/api/v2/partner")
+public class PartnerControllerV2 {
     @GetMapping("")
     public String test() {
         return "Hello this is Service";
     }
 
-    @GetMapping("/kintil")
+    @GetMapping("/test")
     public String qintil() {
-        return "Hello this is qintil";
+        return "Hello this is test";
     }
 }
