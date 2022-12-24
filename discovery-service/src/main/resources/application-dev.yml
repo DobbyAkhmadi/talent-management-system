@@ -1,0 +1,29 @@
+#setup database dev
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: asdf1234A
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  sql:
+    init:
+      platform: postgres
+#setup eureka stand alone
+eureka:
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 0
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  datacenter: talent-management-system
+  environment: development
+  server:
+    enable-self-preservation: true
