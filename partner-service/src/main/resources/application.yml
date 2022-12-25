@@ -1,7 +1,3 @@
-#setup current server and port
-server:
-  port: 0
-
 #setup current library
 spring:
   application:

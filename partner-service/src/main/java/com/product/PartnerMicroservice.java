@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class PartnerService {
+public class PartnerMicroservice {
     public static void main(String[] args) {
-        SpringApplication.run(PartnerService.class, args);
+        SpringApplication.run(PartnerMicroservice.class, args);
     }
 }
