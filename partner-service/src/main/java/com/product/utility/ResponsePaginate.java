@@ -1,18 +1,19 @@
 package com.product.utility;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class ResponsePaginate {
     private HttpStatus status;
     private int code;
     private List<Object> data;
-    private int currentPageIndex;
-    private int currentPageSize;
+    private int pageIndex;
+    private int pageSize;
     private long totalElements;
     private int totalPages;
     private int nextPage;

@@ -56,10 +56,10 @@ public class PartnerPersistenceAdapter implements LoadPartnerPort, SavePartnerPo
     }
 
     @Override
-    public Optional<Partner> store(Partner partner) throws Exception {
+    public Partner store(Partner partner) throws Exception {
         try {
             log.info("store from repository");
-            return Optional.of(partnerRepository.save(partner));
+            return partnerRepository.save(partner);
         } catch (Exception e) {
             log.info("error from repository : " + e);
             throw new Exception();
@@ -67,13 +67,13 @@ public class PartnerPersistenceAdapter implements LoadPartnerPort, SavePartnerPo
     }
 
     @Override
-    public Optional<Partner> update(UUID uuid, Partner partner) throws Exception {
+    public Partner update(UUID uuid, Partner partner) throws Exception {
         try {
             Partner partner1 = loadPartnerById(uuid).orElseThrow(Exception::new);
             partner1.setName(partner.getName());
             partner1.setAddress(partner.getAddress());
             log.info("update from repository");
-            return Optional.of(partnerRepository.save(partner1));
+            return partnerRepository.save(partner1);
         } catch (Exception e) {
             log.info("error from repository : " + e);
             throw new Exception();

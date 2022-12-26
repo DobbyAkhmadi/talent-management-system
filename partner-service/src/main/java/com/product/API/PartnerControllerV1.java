@@ -1,15 +1,20 @@
 package com.product.API;
 
+import com.product.dto.PartnerRequestDTO;
 import com.product.service.PartnerService;
+import com.product.utility.CustomResponse;
 import com.product.utility.RequestPaginate;
 import com.product.utility.ResponsePaginate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.UUID;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/api/v1/partner")
@@ -28,4 +33,30 @@ public class PartnerControllerV1 {
 
         return new ResponseEntity<>(partnerResponseList, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable UUID id) throws Exception {
+        CustomResponse customResponse = partnerService.getPartnerById(id);
+
+        if (customResponse.getData() == null) {
+            return new ResponseEntity<>("No Content!", HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(customResponse, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> store(@Valid @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+        CustomResponse customResponse = partnerService.storePartner(partnerRequestDTO);
+
+        return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> update(@PathVariable UUID id,@Valid @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+        CustomResponse customResponse = partnerService.updatePartner(id,partnerRequestDTO);
+
+        return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
+    }
+
 }
