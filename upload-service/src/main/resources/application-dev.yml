@@ -1,6 +1,6 @@
 #setup current server and port
 server:
-  port: 8082
+  port: 8083
 spring:
   datasource:
     url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
