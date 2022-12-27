@@ -18,6 +18,7 @@
         <module>discovery-service</module>
         <module>api-gateway-service</module>
         <module>partner-service</module>
+        <module>upload-service</module>
     </modules>
 
     <properties>
