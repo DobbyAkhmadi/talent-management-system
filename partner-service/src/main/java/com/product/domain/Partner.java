@@ -1,31 +1,31 @@
 package com.product.domain;
 
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@SQLDelete(sql = "UPDATE Partner SET deleted_at = true WHERE id=?")
+@ToString
+@RequiredArgsConstructor
 public class Partner {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "char(36)")
-    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
     private String name;
     private String address;
@@ -36,4 +36,17 @@ public class Partner {
     private String updatedAt;
     @Column(name = "deleted_at")
     private boolean isDeleted= Boolean.FALSE;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Partner partner = (Partner) o;
+        return id != null && Objects.equals(id, partner.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

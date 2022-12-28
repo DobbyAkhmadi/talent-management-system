@@ -26,9 +26,9 @@ public class AllLoader implements ApplicationListener<ApplicationReadyEvent> {
             Faker faker = new Faker();
             String name = faker.name().fullName();
             String streetAddress = faker.address().streetAddress();
-            Partner partner = Partner.builder()
-                    .address(streetAddress)
-                    .name(name).build();
+            Partner partner = new Partner();
+                    partner.setAddress(streetAddress);
+                    partner.setName(name);
             partnerList.add(partner);
         }
         partnerRepository.saveAll(partnerList);

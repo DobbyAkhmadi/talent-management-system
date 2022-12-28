@@ -9,9 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -46,15 +47,15 @@ public class PartnerControllerV1 {
     }
 
     @PostMapping(value = "", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> store(@Valid @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+    public ResponseEntity<?> store(@Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
         CustomResponse customResponse = partnerService.storePartner(partnerRequestDTO);
 
         return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> update(@PathVariable UUID id,@Valid @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
-        CustomResponse customResponse = partnerService.updatePartner(id,partnerRequestDTO);
+    public ResponseEntity<?> update(@PathVariable UUID id, @Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+        CustomResponse customResponse = partnerService.updatePartner(id, partnerRequestDTO);
 
         return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
     }
