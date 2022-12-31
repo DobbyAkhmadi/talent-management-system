@@ -1,7 +1,8 @@
 package com.product.utility;
 
-import jakarta.validation.constraints.Null;
 import lombok.Data;
+
+import javax.validation.constraints.Null;
 
 
 @Data
