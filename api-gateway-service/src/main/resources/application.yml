@@ -16,28 +16,20 @@ spring:
     name: api-gateway-service
   main:
     web-application-type: reactive
-  zipkin:
-    base-url: http://localhost:9411
   sleuth:
     sampler:
       probability: 1.0
   profiles:
     active: dev
   cloud:
+    config:
+      enabled: false
     gateway:
       routes:
         - id: partner-service
           uri: lb://partner-service # load balancer
           predicates:
             - Path=/api/v1/partner/**,/api/v2/partner/**
-        - id: talent-management-service
-          uri: lb://talent-management-service # load balancer
-          predicates:
-            - Path=/api/v1/talent-management/**
-        - id: upload-service
-          uri: lb://upload-service # load balancer
-          predicates:
-            - Path=/api/v1/upload/**
 logging:
   level:
     root: info
