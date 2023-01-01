@@ -8,10 +8,8 @@ import com.product.utility.ResponsePaginate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.UUID;
 
@@ -20,7 +18,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/api/v1/partner")
 @RequiredArgsConstructor
-@Component
 public class PartnerControllerV1 {
     private final PartnerService partnerService;
 
