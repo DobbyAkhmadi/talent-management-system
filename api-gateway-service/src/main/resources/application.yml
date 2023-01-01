@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+#setup service discovery eureka
+eureka:
+  instance:
+    status-page-url-path: /actuator/health
+    hostname: localhost
+  client:
+    region: ID-Bandung - Batununggal
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka
+
+spring:
+  application:
+    name: api-gateway-service
+  main:
+    web-application-type: reactive
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      routes:
+        - id: partner-service
+          uri: lb://partner-service # load balancer
+          predicates:
+            - Path=/api/v1/partner/**,/api/v2/partner/**
+        - id: talent-management-service
+          uri: lb://talent-management-service # load balancer
+          predicates:
+            - Path=/api/v1/talent-management/**
+        - id: upload-service
+          uri: lb://upload-service # load balancer
+          predicates:
+            - Path=/api/v1/upload/**
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    org.springframework.cloud.gateway: TRACE
