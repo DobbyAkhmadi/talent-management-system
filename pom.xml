@@ -16,5 +16,6 @@
         <module>discovery-service</module>
         <module>api-gateway-service</module>
         <module>partner-service</module>
+        <module>notification-service</module>
     </modules>
 </project>

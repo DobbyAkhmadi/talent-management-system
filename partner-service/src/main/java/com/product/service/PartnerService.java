@@ -14,7 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,7 +35,7 @@ public class PartnerService {
         ResponsePaginate responsePaginate = new ResponsePaginate();
         responsePaginate.setStatus(HttpStatus.OK);
         responsePaginate.setCode(HttpStatus.OK.value());
-        responsePaginate.setData(Collections.singletonList(partnerMapper.toPartnerDtoList(content)));
+        responsePaginate.setData(partnerMapper.toPartnerDtoList(content));
         responsePaginate.setPageIndex(partners.getNumber());
         responsePaginate.setPageSize(partners.getSize());
         responsePaginate.setTotalElements(partners.getTotalElements());
