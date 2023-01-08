@@ -15,3 +15,9 @@ eureka:
     service-url:
       defaultZone: http://eureka:password@localhost:8761/eureka
 
+# Management Actuator Endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

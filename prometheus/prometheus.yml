@@ -1,0 +1,17 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'partner_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['partner-service:0']
+        labels:
+          application: 'Partner Service Application'
+  - job_name: 'notification_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'notification-service:0' ]
+        labels:
+          application: 'Notification Service Application'

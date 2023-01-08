@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,8 +24,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class Partner {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
+    @UuidGenerator
     @Column(name = "id", columnDefinition = "char(36)")
     private UUID id;
     private String name;
