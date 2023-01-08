@@ -3,6 +3,8 @@ package com.product.service;
 import com.product.converter.PartnerMapper;
 import com.product.domain.Partner;
 import com.product.dto.PartnerRequestDTO;
+import com.product.exception.NotFoundException;
+import com.product.exception.SystemException;
 import com.product.repository.port.LoadPartnerPort;
 import com.product.repository.port.SavePartnerPort;
 import com.product.utility.CustomResponse;
@@ -27,26 +29,31 @@ public class PartnerService {
     private final SavePartnerPort savePartnerPort;
     private final PartnerMapper partnerMapper;
 
-    public ResponsePaginate getPagination(RequestPaginate requestPaginate) throws Exception {
-        Page<Partner> partners = loadPartnerPort.loadAllPartnerPagination(requestPaginate);
-        assert partners != null;
-        List<Partner> content = partners.getContent();
+    public ResponsePaginate getPagination(RequestPaginate requestPaginate) throws SystemException {
+        try {
+            Page<Partner> partners = loadPartnerPort.loadAllPartnerPagination(requestPaginate);
+            assert partners != null;
+            List<Partner> content = partners.getContent();
 
-        ResponsePaginate responsePaginate = new ResponsePaginate();
-        responsePaginate.setStatus(HttpStatus.OK);
-        responsePaginate.setCode(HttpStatus.OK.value());
-        responsePaginate.setData(partnerMapper.toPartnerDtoList(content));
-        responsePaginate.setPageIndex(partners.getNumber());
-        responsePaginate.setPageSize(partners.getSize());
-        responsePaginate.setTotalElements(partners.getTotalElements());
-        responsePaginate.setTotalPages(partners.getTotalPages());
-        responsePaginate.setNextPage(partners.getPageable().next().getPageNumber());
-        responsePaginate.setPreviousPage(partners.getPageable().previousOrFirst().getPageNumber());
+            ResponsePaginate responsePaginate = new ResponsePaginate();
+            responsePaginate.setStatus(HttpStatus.OK);
+            responsePaginate.setCode(HttpStatus.OK.value());
+            responsePaginate.setData(partnerMapper.toPartnerDtoList(content));
+            responsePaginate.setPageIndex(partners.getNumber());
+            responsePaginate.setPageSize(partners.getSize());
+            responsePaginate.setTotalElements(partners.getTotalElements());
+            responsePaginate.setTotalPages(partners.getTotalPages());
+            responsePaginate.setNextPage(partners.getPageable().next().getPageNumber());
+            responsePaginate.setPreviousPage(partners.getPageable().previousOrFirst().getPageNumber());
 
-        return responsePaginate;
+            return responsePaginate;
+        } catch (Exception e) {
+            throw new SystemException(e);
+        }
+
     }
 
-    public CustomResponse storePartner(PartnerRequestDTO requestDTO) throws Exception {
+    public CustomResponse storePartner(PartnerRequestDTO requestDTO) throws SystemException {
         try {
             Partner partner = new Partner();
             partner.setName(requestDTO.getName());
@@ -60,11 +67,11 @@ public class PartnerService {
             customResponse.setData(partnerMapper.toPartner(partner2));
             return customResponse;
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new SystemException(e);
         }
     }
 
-    public CustomResponse updatePartner(UUID id, PartnerRequestDTO requestDTO) throws Exception {
+    public CustomResponse updatePartner(UUID id, PartnerRequestDTO requestDTO) throws SystemException {
         try {
 
             Partner partner1 = new Partner();
@@ -79,12 +86,12 @@ public class PartnerService {
             customResponse.setData(partnerMapper.toPartner(partner2));
             return customResponse;
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new SystemException(e);
         }
     }
 
 
-    public CustomResponse getPartnerById(UUID uuid) throws Exception {
+    public CustomResponse getPartnerById(UUID uuid) throws NotFoundException {
         try {
             Optional<Partner> employeeOptional = loadPartnerPort.loadPartnerById(uuid);
             CustomResponse customResponse = new CustomResponse();
@@ -96,7 +103,7 @@ public class PartnerService {
 
             return customResponse;
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new NotFoundException(e);
         }
 
     }

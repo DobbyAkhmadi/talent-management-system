@@ -1,0 +1,3 @@
+#setup current server and port
+server:
+  port: 8085

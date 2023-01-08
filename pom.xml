@@ -17,5 +17,10 @@
         <module>api-gateway-service</module>
         <module>partner-service</module>
         <module>notification-service</module>
+        <module>user-service</module>
+        <module>storage-service</module>
+        <module>dashboard-service</module>
+        <module>candidate-service</module>
+        <module>management-candidate-service</module>
     </modules>
 </project>

@@ -18,6 +18,8 @@ spring:
           uri: lb://partner-service # load balancer
           predicates:
             - Path=/api/v1/partner/**,/api/v2/partner/**
+          filters:
+            - RewritePath=/partner/(?<path>.*), /$\{path}
 
 #setup service discovery eureka
 eureka:

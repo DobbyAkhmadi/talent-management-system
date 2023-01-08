@@ -1,6 +1,7 @@
 package com.product.repository;
 
 import com.product.domain.Partner;
+import com.product.exception.SystemException;
 import com.product.repository.port.DeletePartnerPort;
 import com.product.repository.port.LoadPartnerPort;
 import com.product.repository.port.SavePartnerPort;
@@ -57,18 +58,18 @@ public class PartnerPersistenceAdapter implements LoadPartnerPort, SavePartnerPo
     }
 
     @Override
-    public Partner store(Partner partner) throws Exception {
+    public Partner store(Partner partner) throws SystemException {
         try {
             log.info("store from repository " + partner);
             return partnerRepository.save(partner);
         } catch (Exception e) {
             log.info("error from store repository : " + e);
-            throw new Exception();
+            throw new SystemException();
         }
     }
 
     @Override
-    public Partner update(UUID uuid, Partner partner) throws Exception {
+    public Partner update(UUID uuid, Partner partner) throws SystemException {
         try {
             Partner partner1 = loadPartnerById(uuid).orElseThrow(Exception::new);
             partner1.setName(partner.getName());
@@ -77,7 +78,7 @@ public class PartnerPersistenceAdapter implements LoadPartnerPort, SavePartnerPo
             return partnerRepository.save(partner1);
         } catch (Exception e) {
             log.info("error from update repository : " + e);
-            throw new Exception();
+            throw new SystemException();
         }
     }
 

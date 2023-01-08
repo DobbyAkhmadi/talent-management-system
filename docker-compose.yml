@@ -34,7 +34,7 @@ services:
 
   ## Prometheus & Grafana Monitoring Tools
   prometheus:
-    image: prom/prometheus:v2.37.1
+    image: prom/prometheus
     container_name: prometheus
     restart: unless-stopped
     ports:
@@ -46,7 +46,7 @@ services:
 #      - notification-service
 
   grafana:
-    image: grafana/grafana-oss:8.5.2
+    image: grafana/grafana-oss:9.3.1
     container_name: grafana
     restart: unless-stopped
     ports:

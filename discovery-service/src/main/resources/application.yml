@@ -12,7 +12,7 @@ spring:
 eureka:
   instance:
     hostname: localhost
-    lease-renewal-interval-in-seconds: 0
+    lease-renewal-interval-in-seconds: 1
   client:
     register-with-eureka: false
     fetch-registry: false
@@ -24,9 +24,28 @@ eureka:
   server:
     enable-self-preservation: true
 
-# Management Actuator Endpoint
+# Management Actuator Endpoint Prometheus and Grafana
 management:
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
   endpoints:
     web:
       exposure:
         include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+
+# Logging Service Discovery
+logging:
+  level:
+    com:
+    netflix:
+    discovery : OFF
+    eureka: OFF
