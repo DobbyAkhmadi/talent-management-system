@@ -7,8 +7,6 @@ spring:
   main:
     web-application-type: reactive
   sleuth:
-    integration:
-      enabled: true
     sampler:
       probability: 1.0
   profiles:
@@ -36,3 +34,10 @@ logging:
     root: info
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
     org.springframework.cloud.gateway: TRACE
+
+# Management Actuator Endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

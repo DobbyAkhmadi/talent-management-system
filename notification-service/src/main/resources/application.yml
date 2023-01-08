@@ -39,9 +39,9 @@ eureka:
     service-url:
       defaultZone: http://eureka:password@localhost:8761/eureka
 
-# Actuator Prometheus Endpoint
+# Management Actuator Endpoint
 management:
   endpoints:
     web:
       exposure:
-        include: prometheus
+        include: "*"

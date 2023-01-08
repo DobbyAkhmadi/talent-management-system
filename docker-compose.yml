@@ -41,9 +41,9 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    depends_on:
-      - partner-service
-      - notification-service
+#    depends_on:
+#      - partner-service
+#      - notification-service
 
   grafana:
     image: grafana/grafana-oss:8.5.2

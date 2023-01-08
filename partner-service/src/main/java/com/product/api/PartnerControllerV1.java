@@ -1,4 +1,4 @@
-package com.product.API;
+package com.product.api;
 
 import com.product.dto.PartnerRequestDTO;
 import com.product.service.PartnerService;
@@ -22,37 +22,29 @@ public class PartnerControllerV1 {
     private final PartnerService partnerService;
 
     @GetMapping("")
-    public ResponseEntity<?> getPagination(RequestPaginate requestPaginate) throws Exception {
+    public ResponseEntity<ResponsePaginate> getPagination(RequestPaginate requestPaginate) throws Exception {
         ResponsePaginate partnerResponseList = partnerService.getPagination(requestPaginate);
-
-        if (partnerResponseList.getData() == null) {
-            return new ResponseEntity<>("No Content!", HttpStatus.NO_CONTENT);
-        }
 
         return new ResponseEntity<>(partnerResponseList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable UUID id) throws Exception {
-        CustomResponse customResponse = partnerService.getPartnerById(id);
-
-        if (customResponse.getData() == null) {
-            return new ResponseEntity<>("No Content!", HttpStatus.NO_CONTENT);
-        }
+    public ResponseEntity<CustomResponse> getById(@PathVariable String id) throws Exception {
+        CustomResponse customResponse = partnerService.getPartnerById(UUID.fromString(id));
 
         return new ResponseEntity<>(customResponse, HttpStatus.OK);
     }
 
     @PostMapping(value = "", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> store(@Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+    public ResponseEntity<CustomResponse> store(@Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
         CustomResponse customResponse = partnerService.storePartner(partnerRequestDTO);
 
         return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> update(@PathVariable UUID id, @Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
-        CustomResponse customResponse = partnerService.updatePartner(id, partnerRequestDTO);
+    public ResponseEntity<CustomResponse> update(@PathVariable String id, @Validated @RequestBody PartnerRequestDTO partnerRequestDTO) throws Exception {
+        CustomResponse customResponse = partnerService.updatePartner(UUID.fromString(id), partnerRequestDTO);
 
         return new ResponseEntity<>(customResponse, HttpStatus.CREATED);
     }
