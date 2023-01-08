@@ -1,7 +1,7 @@
 #setup current library
 spring:
   application:
-    name: partner-service
+    name: user-service
   profiles:
     active: dev
 
