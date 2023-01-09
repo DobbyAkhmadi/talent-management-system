@@ -21,6 +21,6 @@
         <module>storage-service</module>
         <module>dashboard-service</module>
         <module>candidate-service</module>
-        <module>management-candidate-service</module>
+        <module>management-assignment-service</module>
     </modules>
 </project>

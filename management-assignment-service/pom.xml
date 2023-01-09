@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.product</groupId>
-    <artifactId>management-candidate-service</artifactId>
+    <artifactId>management-assignment-service</artifactId>
 
     <properties>
         <java.version>17</java.version>

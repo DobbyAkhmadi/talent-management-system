@@ -1,7 +1,7 @@
 #setup current library
 spring:
   application:
-    name: management-candidate-service
+    name: management-assignment-service
   profiles:
     active: dev
 
