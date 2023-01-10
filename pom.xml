@@ -22,5 +22,6 @@
         <module>dashboard-service</module>
         <module>candidate-service</module>
         <module>management-assignment-service</module>
+        <module>configuration-server</module>
     </modules>
 </project>
