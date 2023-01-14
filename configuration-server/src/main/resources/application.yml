@@ -7,3 +7,5 @@ spring:
       server:
         git:
           uri: https://github.com/DobbyAkhmadi/microservices-config
+          clone-on-start: true
+      enabled: true
