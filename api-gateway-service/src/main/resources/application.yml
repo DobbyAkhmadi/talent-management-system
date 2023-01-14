@@ -21,6 +21,13 @@ spring:
           filters:
             - RewritePath=/partner/(?<path>.*), /$\{path}
 
+        - id: storage-service
+          uri: lb://storage-service # load balancer
+          predicates:
+            - Path=/api/v1/storage/**,/api/v2/storage/**
+          filters:
+            - RewritePath=/storage/(?<path>.*), /$\{path}
+
 #setup service discovery eureka
 eureka:
   instance:
