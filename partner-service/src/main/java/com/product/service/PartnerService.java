@@ -1,6 +1,6 @@
 package com.product.service;
 
-import com.product.converter.PartnerMapper;
+import com.product.mapper.PartnerMapper;
 import com.product.domain.Partner;
 import com.product.dto.PartnerRequestDTO;
 import com.product.exception.NotFoundException;

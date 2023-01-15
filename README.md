@@ -7,7 +7,7 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=DobbyAkhmadi_talent-management-system&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=DobbyAkhmadi_talent-management-system)
 
 ### Architecture
-![SonarCloud](https://github.com/DobbyAkhmadi/talent-management-system/blob/development/architecture.svg)
+![SonarCloud](https://github.com/DobbyAkhmadi/talent-management-system/blob/development/architecture.png)
 
 
 ### Software Design Architecture
@@ -43,7 +43,7 @@
 
 ### Monitoring & Notification
 - Prometheus & Grafana
-- Discord / Slack
+-  Slack
 
 ### Search Engines
 - ElasticSearch
@@ -51,3 +51,6 @@
 ### Code Analysis
 - SonarCloud
 - SonarLint for IDE
+
+### Documentation
+- OpenAPI Swagger 3
