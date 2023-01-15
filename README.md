@@ -43,7 +43,7 @@
 
 ### Monitoring & Notification
 - Prometheus & Grafana
-- Discord / Slack
+-  Slack
 
 ### Search Engines
 - ElasticSearch
@@ -51,3 +51,6 @@
 ### Code Analysis
 - SonarCloud
 - SonarLint for IDE
+
+### Documentation
+- OpenAPI Swagger 3

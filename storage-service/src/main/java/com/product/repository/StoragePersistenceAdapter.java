@@ -47,10 +47,10 @@ public class StoragePersistenceAdapter implements LoadStoragePort, SaveStoragePo
     }
 
     @Override
-    public Optional<Storage> loadStorageByColumns(String columns) throws NotFoundException {
+    public Optional<Storage> loadStorageByColumns(String columns,String values) throws NotFoundException {
         try {
-            log.info("load from repository by " + columns);
-            return Optional.of(storageRepository.getByColumn(columns));
+            log.info("load from repository by " + columns + values);
+            return Optional.of(storageRepository.getByColumns(columns,values));
         } catch (Exception e) {
             log.info("error from loadStorageByColumns repository : " + e);
             throw new NotFoundException();
@@ -64,20 +64,6 @@ public class StoragePersistenceAdapter implements LoadStoragePort, SaveStoragePo
             return storageRepository.save(storage);
         } catch (Exception e) {
             log.info("error from store repository : " + e);
-            throw new SystemException();
-        }
-    }
-
-    @Override
-    public Storage update(UUID uuid, Storage storage) throws SystemException {
-        try {
-            Storage newUpdatedStorage = loadStorageById(uuid).orElseThrow(Exception::new);
-            newUpdatedStorage.setFileName(storage.getFileName());
-            newUpdatedStorage.setFileUrl(storage.getFileUrl());
-            log.info("update from repository with id : " + uuid);
-            return storageRepository.save(newUpdatedStorage);
-        } catch (Exception e) {
-            log.info("error from update repository : " + e);
             throw new SystemException();
         }
     }

@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
+
 @Entity
 @Getter
 @Setter
@@ -28,6 +29,12 @@ public class Storage {
     private String fileName;
     @Column(name = "file_url")
     private String fileUrl;
+    @Column(name = "flag_code")
+    private String flagCode;
+    @Column(name = "content_type")
+    private String contentType;
+    @Column(name = "file_size")
+    private Long fileSize;
 
     @Override
     public boolean equals(Object o) {

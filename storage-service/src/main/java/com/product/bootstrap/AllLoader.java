@@ -24,12 +24,12 @@ public class AllLoader implements ApplicationListener<ApplicationReadyEvent> {
 
         for (int i = 0; i < 100; i++) {
             Faker faker = new Faker();
-            String name = faker.name().fullName();
-            String streetAddress = faker.address().streetAddress();
-            Storage partner = new Storage();
-                    partner.setFileUrl(streetAddress);
-                    partner.setFileName(name);
-            storageList.add(partner);
+            Storage storage = new Storage();
+                    storage.setFlagCode(faker.code().imei());
+                    storage.setFileSize(Long.valueOf(faker.code().isbn13()));
+                    storage.setFileName(faker.file().fileName());
+                    storage.setContentType(faker.file().extension());
+            storageList.add(storage);
         }
         storageRepository.saveAll(storageList);
     }

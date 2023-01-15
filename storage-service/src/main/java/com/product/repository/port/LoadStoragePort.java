@@ -11,5 +11,5 @@ import java.util.UUID;
 public interface LoadStoragePort {
     Page<Storage> loadAllStoragePagination(RequestPaginate requestPaginate) throws NotFoundException;
     Optional<Storage> loadStorageById(UUID uuid) throws NotFoundException;
-    Optional<Storage> loadStorageByColumns(String columns) throws NotFoundException;
+    Optional<Storage> loadStorageByColumns(String columns,String values) throws NotFoundException;
 }

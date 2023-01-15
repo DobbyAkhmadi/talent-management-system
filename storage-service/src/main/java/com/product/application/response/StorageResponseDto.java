@@ -1,4 +1,4 @@
-package com.product.dto;
+package com.product.application.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,11 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StorageResponseDTO {
+public class StorageResponseDto {
     private UUID id;
-
-    private String fileName;
-
+    private String flagCode;
     private String fileUrl;
+    private String fileName;
+    private String contentType;
+    private String fileSize;
 }

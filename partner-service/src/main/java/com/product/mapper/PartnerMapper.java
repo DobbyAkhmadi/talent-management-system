@@ -1,4 +1,4 @@
-package com.product.converter;
+package com.product.mapper;
 
 import com.product.domain.Partner;
 import com.product.dto.PartnerResponseDTO;
