@@ -20,14 +20,14 @@
   - Spring Elasticsearch
   - Spring Io Micrometer Prometheus
   - Spring Map Struct
-  - Spring Lombok annotation
+  - Spring Lombok
   - Spring Hibernate
   - Spring Shell
 - Spring Cloud **2021.0.5**
   - Spring Cloud Kubernetes **3.1.5**
   - Spring Cloud Config **3.1.5**
-  - Spring Cloud kafka 
-  - Spring Cloud Gateway **3.1.0**
+  - Spring Cloud kafka + Kafka UI Clusters
+  - Spring Cloud Gateway **3.1.0** | Rate Limiter (For Limit Request Each User)
   - Spring Cloud Actuator **3.0.0**
   - Spring Cloud Discovery Eureka **3.1.4**
   - Spring Cloud Sleuth  **3.1.5**
@@ -39,7 +39,7 @@
 - Spring Boot Liquibase
 
 ### Cache Management
-- Spring Boot Redis Replication
+- Spring Boot Redis ( Setting For Replication )
 
 ### Monitoring & Notification
 - Prometheus & Grafana
