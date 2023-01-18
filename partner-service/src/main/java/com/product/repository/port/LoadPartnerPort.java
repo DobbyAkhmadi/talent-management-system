@@ -11,5 +11,5 @@ import java.util.UUID;
 public interface LoadPartnerPort {
     Page<Partner> loadAllPartnerPagination(RequestPaginate requestPaginate) throws NotFoundException;
     Optional<Partner> loadPartnerById(UUID uuid) throws NotFoundException;
-    Optional<Partner> loadPartnerByColumns(String columns) throws NotFoundException;
+    Optional<Partner> loadPartnerByColumns(String columns,String values) throws NotFoundException;
 }

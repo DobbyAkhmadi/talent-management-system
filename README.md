@@ -15,25 +15,32 @@
 - TDD (Test Driven Development) 
 
 ### Technologies
-- Java JDK 17
+- Java JDK **17** 
 - Spring Boot **2.7.7** 
   - Spring Elasticsearch
-  - Spring Io Micrometer Prometheus
+  - Spring IO Micrometer Prometheus
   - Spring Map Struct
   - Spring Lombok
-  - Spring Hibernate
+    - Dependency Injection Annotation
+  - Spring JPA Hibernate
+  - Spring Validation
   - Spring Shell
 - Spring Cloud **2021.0.5**
-  - Spring Cloud Kubernetes **3.1.5**
+  - Spring Cloud Kubernetes **3.1.5** (Docker) (Experimental)
+    - Cloud Configuration Server
   - Spring Cloud Config **3.1.5**
-  - Spring Cloud kafka + Kafka UI Clusters
-  - Spring Cloud Gateway **3.1.0** | Rate Limiter (For Limit Request Each User)
+    - Git Method
+  - Spring Cloud kafka 
+    - Kafka UI
+  - Spring Cloud Gateway **3.1.0** 
+    - Rate Limiter (For Limit Request Each User)
   - Spring Cloud Actuator **3.0.0**
   - Spring Cloud Discovery Eureka **3.1.4**
   - Spring Cloud Sleuth  **3.1.5**
   - Spring Cloud Zipkin (Docker)
   - Spring Cloud Circuit Breaker **2.1.5**
-  - Spring Cloud Security OAUTH SSO Integration
+  - Spring Cloud OpenFeign
+  - Spring Cloud Security OAuth 2.0/OpenID Connect
 
 ### Migration Management
 - Spring Boot Liquibase
@@ -54,3 +61,11 @@
 
 ### Documentation
 - OpenAPI Swagger 3
+
+### Testing
+- Cucumber for BDD
+- JUnit for TDD
+
+### Automated Testing
+- Newman
+- Robot Framework

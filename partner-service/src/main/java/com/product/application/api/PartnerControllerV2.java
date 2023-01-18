@@ -1,4 +1,4 @@
-package com.product.api;
+package com.product.application.api;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

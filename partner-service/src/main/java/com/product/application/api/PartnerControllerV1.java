@@ -1,6 +1,6 @@
-package com.product.api;
+package com.product.application.api;
 
-import com.product.dto.PartnerRequestDTO;
+import com.product.application.request.PartnerRequestDTO;
 import com.product.exception.NotFoundException;
 import com.product.exception.SystemException;
 import com.product.service.PartnerService;

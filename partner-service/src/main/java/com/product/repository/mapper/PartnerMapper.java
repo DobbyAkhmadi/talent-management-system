@@ -1,7 +1,7 @@
-package com.product.mapper;
+package com.product.repository.mapper;
 
 import com.product.domain.Partner;
-import com.product.dto.PartnerResponseDTO;
+import com.product.application.response.PartnerResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -1,8 +1,9 @@
 package com.product.service;
 
-import com.product.mapper.PartnerMapper;
+import com.product.application.usecase.IPartnerUseCase;
+import com.product.repository.mapper.PartnerMapper;
 import com.product.domain.Partner;
-import com.product.dto.PartnerRequestDTO;
+import com.product.application.request.PartnerRequestDTO;
 import com.product.exception.NotFoundException;
 import com.product.exception.SystemException;
 import com.product.repository.port.LoadPartnerPort;
@@ -24,7 +25,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class PartnerService {
+public class PartnerService implements IPartnerUseCase {
     private final LoadPartnerPort loadPartnerPort;
     private final SavePartnerPort savePartnerPort;
     private final PartnerMapper partnerMapper;

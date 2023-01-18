@@ -47,10 +47,10 @@ public class PartnerPersistenceAdapter implements LoadPartnerPort, SavePartnerPo
     }
 
     @Override
-    public Optional<Partner> loadPartnerByColumns(String columns) throws NotFoundException {
+    public Optional<Partner> loadPartnerByColumns(String columns,String values) throws NotFoundException {
         try {
-            log.info("load from repository by " + columns);
-            return Optional.of(partnerRepository.getByColumn(columns));
+            log.info("load from repository by " + columns+values);
+            return Optional.of(partnerRepository.getByColumns(columns,values));
         } catch (Exception e) {
             log.info("error from loadPartnerByColumns repository : " + e);
             throw new NotFoundException();

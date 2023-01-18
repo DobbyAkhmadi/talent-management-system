@@ -1,6 +1,6 @@
 package com.product.utility;
 
-import com.product.dto.PartnerResponseDTO;
+import com.product.application.response.PartnerResponseDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
