@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-@Profile({"dev","qa"})
+@Profile({"development","qa"})
 public class AllLoader implements ApplicationListener<ApplicationReadyEvent> {
     private final PartnerRepository partnerRepository;
     @Override
